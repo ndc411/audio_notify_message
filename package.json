@@ -1,0 +1,41 @@
+{
+  "name": "audio_notify_message",
+  "version": "1.0.0",
+  "description": "网页语音播报通知",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@babel/plugin-transform-async-to-generator": "^7.22.5",
+    "axios": "^0.27.2",
+    "cross-env": "^7.0.3",
+    "dayjs": "^1.11.7",
+    "decimal.js": "^10.4.3",
+    "dotenv": "^16.0.3",
+    "form-data": "^4.0.0",
+    "https": "^1.0.0",
+    "https-proxy-agent": "^5.0.1",
+    "koa": "^2.14.2",
+    "koa-body": "^6.0.1",
+    "koa-bodyparser": "^4.4.0",
+    "koa-router": "^12.0.0",
+    "koa-views": "^8.1.0",
+    "koa2-cors": "^2.0.6",
+    "lodash-id": "^0.14.1",
+    "log4js": "^6.9.1",
+    "lowdb": "^1.0.0",
+    "node-html-to-image": "^3.2.4",
+    "node-schedule": "^2.1.1",
+    "nodemon": "^2.0.21",
+    "puppeteer": "^19.4.1",
+    "qs-stringify": "^1.2.1",
+    "request": "^2.88.2",
+    "socks5-https-client": "^1.2.1",
+    "template2image": "^1.0.4",
+    "tesseract.js": "^4.0.1"
+  }
+}

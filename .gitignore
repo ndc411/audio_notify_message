@@ -1,0 +1,8 @@
+.idea
+node_modules
+package-lock.json
+
+# todo 后面要在服务端删除的文件
+eng.traineddata
+
+bank_pnb/pnb_bank_flow_files
