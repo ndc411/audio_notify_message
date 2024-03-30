@@ -13,15 +13,20 @@ const request = require("request");
 const logger = require('./logger/index')
 const router = require('./routes/index')
 
+app.use(async (ctx, next) => {
+  console.log(`语音服务接收到请求: \nmethod: ${ctx.request.method} uri: ${ctx.request.url}`)
+  await next();
+});
+
 
 // 创建文件夹目录 todo
-var dirPath = path.join(__dirname, "file");
-if (!fs.existsSync(dirPath)) {
-  fs.mkdirSync(dirPath);
-  logger.debug("文件夹创建成功");
-} else {
-  logger.debug("文件夹已存在");
-}
+// var dirPath = path.join(__dirname, "file");
+// if (!fs.existsSync(dirPath)) {
+//   fs.mkdirSync(dirPath);
+//   logger.debug("文件夹创建成功");
+// } else {
+//   logger.debug("文件夹已存在");
+// }
 
 
 // koa请求跨域问题
@@ -63,8 +68,7 @@ function downlLoadFile() {
 app.use(router.routes());
 app.use(router.allowedMethods())
 
-app.listen(3000, () => {
-  console.log("正在监听8046端口号！");
+app.listen(8046, () => {
+  console.log("正在监听8046端口号");
   console.log("http://localhost:8046");
-  logger.debug("正在监听3000端口号！")
 });

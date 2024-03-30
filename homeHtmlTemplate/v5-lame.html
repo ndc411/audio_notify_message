@@ -10,12 +10,13 @@
 </head>
 
 <body>
+<H1>语音提示系统部分警报，旨在让内部运营更加优化。例如: 不用时刻人工盯着监控群</H1>
 <input type="text" id="input" value="支付宝到账1亿8千万">
-<button id="btn">点击播放</button>
-<div>你好啊</div>
+<button id="btn">开启播报</button>
 </body>
 <script>
   btn.addEventListener("click", function () {
+    console.log("触发了点击事件")
     //指定文字合成语音
     let speakAudio = new window.SpeechSynthesisUtterance('开始语音播报')
 
@@ -30,4 +31,47 @@
     speakAudio.text = text;//改变播放文本内容
     window.speechSynthesis.speak(speakAudio);//控制播放
   })
+  // $('#input').click()
+  document.getElementById('btn').click()
+  function handleReadingMsgFn(msg) {
+    //指定文字合成语音
+    let speakAudio = new window.SpeechSynthesisUtterance('开始语音播报')
+
+    //配置
+    speakAudio.lang = "zh-CN";//使用语言
+    speakAudio.rate = 1;//播放语速
+    speakAudio.volume = 1;//播放音量
+    //speakAudio.voice = '';//设置声音
+    speakAudio.text = msg;//改变播放文本内容
+    window.speechSynthesis.speak(speakAudio);//控制播放
+  }
+  var baseUrl = 'http://localhost:8046'
+  function handleMsgInfoFn() {
+    $.get(baseUrl + '/getInfo', { param1: 'value1', param2: 'value2' },
+      function(response) {
+      // 请求成功时的回调函数
+      console.log(response);
+      if (response && response.code === 200) {
+        const { message } = response
+        handleReadingMsgFn(message)
+      }
+    }).fail(function(xhr, status, error) {
+      // 请求失败时的回调函数
+      console.error(error);
+    });
+  }
+  setInterval(async () => {
+    await handleMsgInfoFn()
+  }, 10 * 1000)
+  // $(document).ready(async function() {
+  //   try {
+  //     let result = await $.ajax({
+  //       url: 'https://api.example.com/data',
+  //       type: 'GET'
+  //     });
+  //     console.log('Data received:', result);
+  //   } catch (error) {
+  //     console.error('Error fetching data:', error);
+  //   }
+  // });
 </script>

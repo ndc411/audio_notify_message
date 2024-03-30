@@ -5,15 +5,18 @@
 ### 表结构
 ```
 id --- 编号
-plat --- 平台
+platform --- 平台
 name --- 项目名称
-description---描述
-message --- 消息
+messageContent --- 消息
+type--- 消息类型
 channel --- 
 platAccountId --- 
 remark --- 备注
+needAudio --- 播报情况 todo，doing，done, other
 createdTime --- 创建时间
 updateTime --- 更新时间
 
 ```
+
+#### todo-la 需要解决的待办事项
 

@@ -28,7 +28,7 @@ router.get("/getInfo", async(ctx) => {
   let iData = getInfoList();
   if (iData) {
     ctx.body = {
-      code: 209,
+      code: 200,
       message: "查询成功",
       list: iData,
     };
@@ -41,9 +41,12 @@ router.get("/getInfo", async(ctx) => {
   }
 });
 
-router.get("/setInfo", async(ctx) => {
-  let params = ctx.request.body,
-    arr = getInfoList();
+router.post("/setInfo", async(ctx) => {
+  let params1 = ctx.request.body
+  console.log(params1)
+  return
+  let params = ctx.request.body
+  let arr = getInfoList();
   if (params && params.form) { //接口的参数名称form
     //校验
     let { id } = params.form;

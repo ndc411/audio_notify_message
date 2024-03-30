@@ -6,6 +6,7 @@ exports.install = function() {
   const low = require('lowdb');
   const LodashId = require('lodash-id');
   const FileSync = require('lowdb/adapters/FileSync');
+  // todo-la 配置路径
   const JSONPath = path.join(__dirname, '/data.json');
   const adapter = new FileSync(JSONPath)
   const lowdb = low(adapter);
