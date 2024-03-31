@@ -9,7 +9,8 @@ var addDrugformInit = {
 var app = new Vue({
   el: '#app',
   data: {
-    apiBaseUrl: 'http://localhost:8046',
+    voiceType: 'zh-TW',
+    apiBaseUrl: 'http://localhost:8046', // todo-la 这里改为真实的服务地址
     isOpenAudioMsg: false,
     msgList: [],
     readingMsgInterval: null, // 轮询读取信息的时间任务标识
@@ -23,7 +24,6 @@ var app = new Vue({
     console.log(this.dateTime)
     // todo-la 这里要注意缓存 打开语音开启的状态
     await this.getMsgListFn()
-    console.log(1212)
     this.cycleGetMsgListFn()
   },
   unmount() {
@@ -64,7 +64,7 @@ var app = new Vue({
       const isOpen = !this.isOpenAudioMsg
       // todo 这里设置不开启时，关闭语音播报
       let speakAudio = new window.SpeechSynthesisUtterance(isOpen ? '语音提示已开启' : '语音提示已关闭')
-      speakAudio.lang = "zh-CN";//使用语言
+      speakAudio.lang = this.voiceType;//使用语言
       speakAudio.rate = 1;//播放语速
       speakAudio.volume = 1;//播放音量
       //speakAudio.voice = '';//设置声音
@@ -105,7 +105,7 @@ var app = new Vue({
     handleReadingMsgFn: async function ({id, messageText}) {
       let speakAudio = new window.SpeechSynthesisUtterance('开始语音播报')
       //配置
-      speakAudio.lang = "zh-CN";//使用语言
+      speakAudio.lang = this.voiceType;//使用语言
       speakAudio.rate = 1;//播放语速
       speakAudio.volume = 1;//播放音量
       //speakAudio.voice = '';//设置声音

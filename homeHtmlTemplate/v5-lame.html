@@ -12,6 +12,7 @@
 
 <body>
   <div id="app">
+      <div style="text-align: center;color: #3983bf;font-weight: bold;font-size: 18px;line-height: 2">8秒轮询一次，一次只读一个消息</div>
       <header class="header">
           <H1 style="color: #ff7707">
               语音播放系统部分警报
@@ -35,13 +36,15 @@
               <van-col span="4">播报时间</van-col>
               <van-col span="4">操作</van-col>
           </van-row>
-          <van-row class="line-item table-tr" v-for="({ id, messageText, audioStatus, createdTime, updateTime }, index) in msgList" :key="id">
-              <van-col style="text-align: center" span="10">{{ messageText }}</van-col>
-              <van-col span="3">{{ audioStatus }}</van-col>
-              <van-col span="3">0</van-col>
-              <van-col span="4">{{ updateTime }}</van-col>
-              <van-col span="4"><van-button size="small">删除</van-button></van-col>
-          </van-row>
+          <template v-for="({ id, messageText, audioStatus, createdTime, updateTime }, index) in msgList" :key="id">
+              <van-row class="line-item table-tr" :style="{ background: audioStatus === 'DOING' ? '#ee5811' : '' }">
+                  <van-col style="text-align: center" span="10">{{ messageText }}</van-col>
+                  <van-col span="3">{{ audioStatus }} <van-loading v-show="audioStatus === 'DOING'" type="spinner" color="#1989fa" /></van-col>
+                  <van-col span="3">0</van-col>
+                  <van-col span="4">{{ updateTime }}</van-col>
+                  <van-col span="4"><van-button size="small">删除</van-button></van-col>
+              </van-row>
+          </template>
       </div>
   </div>
   <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
