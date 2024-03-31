@@ -81,13 +81,14 @@ router.post("/updateOneMsgInfo", async(ctx) => {
     arr.forEach((item) => {
       if (item.id === id) {
         item.audioStatus = 'DONE'
+        item.updateTime = currentTimeFn()
       }
     })
     db.set("list", arr).write();
     ctx.body = {
       code: 200,
       message: "修改成功!",
-      list: arr,
+      list: [],
     };
   } else {
     ctx.body = {

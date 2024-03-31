@@ -32,14 +32,14 @@
               <van-col style="text-align: center" span="10">消息内容</van-col>
               <van-col span="3">播报状态</van-col>
               <van-col span="3">剩余播报次数</van-col>
-              <van-col span="4">推送时间</van-col>
+              <van-col span="4">播报时间</van-col>
               <van-col span="4">操作</van-col>
           </van-row>
-          <van-row class="line-item table-tr" v-for="({ id, messageText, audioStatus, createdTime }, index) in msgList" :key="id">
+          <van-row class="line-item table-tr" v-for="({ id, messageText, audioStatus, createdTime, updateTime }, index) in msgList" :key="id">
               <van-col style="text-align: center" span="10">{{ messageText }}</van-col>
               <van-col span="3">{{ audioStatus }}</van-col>
               <van-col span="3">0</van-col>
-              <van-col span="4">{{ createdTime }}</van-col>
+              <van-col span="4">{{ updateTime }}</van-col>
               <van-col span="4"><van-button size="small">删除</van-button></van-col>
           </van-row>
       </div>
