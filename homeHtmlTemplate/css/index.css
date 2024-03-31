@@ -1,0 +1,425 @@
+
+body {
+  background-color: aliceblue;
+}
+
+.header {
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.open-wrap {
+  display: flex;
+  width: 200px;
+  justify-content: center;
+  align-items: center;
+}
+.open-status-no {
+  /*font-size: 18px;*/
+  color: #000;
+}
+.open-status-yes {
+  /*font-size: 18px;*/
+  color: #ec3045;
+}
+
+.content {
+  padding: 20px;
+  background-color: #fff;
+}
+
+.line-item {
+  display: flex;
+  align-items: center;
+  text-align: center;
+}
+.table-header {
+  line-height: 2.4;
+  font-size: 20px;
+  background: #dcdcdc;
+}
+
+.table-tr {
+  line-height: 1.6;
+  font-size: 16px;
+  border-top: 1px solid #000;
+  padding: 10px 0;
+}
+
+.table-tr:hover {
+  background: #e0d7be;
+}
+
+.leftWrap {
+  width: 540px;
+}
+
+.infoWrap {
+  border: 1px dashed #999;
+  border-radius: 20px;
+  padding: 20px 20px;
+  background-color: aliceblue;
+}
+
+.drugNameList  {
+  padding: 20px;
+  background-color: #f7f9ee;
+  border-radius: 6px;
+  margin-top: 20px;
+}
+
+.drugNameListTitle {
+  font-size: 20px;
+  font-style: italic;
+  color: #ee5811;
+  margin-bottom: 16px;
+}
+
+.drugNameTableTitle {
+  font-size: 16px;
+  line-height: 2;
+  color: #000;
+}
+
+.drugNameItem {
+  margin-top: 10px;
+  padding: 6px;
+  border-bottom: 1px solid #999;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.drugNameItem:hover {
+  /* background-color: #dceaf7;
+  border-radius: 4px; */
+}
+
+.drugNameItemName {
+  font-size: 14px;
+  line-height: 2;
+  color: #666;
+}
+
+.drugNameItemBtn {
+  background-color: rgb(243, 189, 119);
+  color: #fff;
+  text-align: center;
+  line-height: 2;
+  font-size: 14px;
+  padding: 4px 20px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.drugNameItemBtn:hover {
+  background-color: rgb(235, 180, 109)
+}
+
+.drugNameItemDeleteBtn {
+  background-color: rgb(255, 102, 0);
+  color: #fff;
+  text-align: center;
+  line-height: 2;
+  font-size: 14px;
+  padding: 4px 20px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.drugNameItemDeleteBtn:hover {
+  background-color: red;
+}
+
+.rightWrap {
+  /* width: 50%; */
+  /* border-left: 1px solid #ee5811; */
+}
+
+.pretitle {
+  font-size: 20px;
+  color: #ee5811;
+  text-align: center;
+}
+
+.downloadWrap {
+  border: 1px dashed #999;
+  border-radius: 20px;
+  max-height: 660px;
+  overflow-y: scroll;
+  width: 540px;
+}
+
+#preview {
+  padding: 20px;
+  width: 380px;
+  position: relative;
+  margin: 0 auto;
+}
+
+.stampImg {
+  width: 140px;
+  height: 143px;
+  position: absolute;
+  top: 20px;
+  right: 30px;
+}
+
+.addDelBtn {
+  display: flex;
+  justify-content: space-around;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 20px;
+}
+
+.previewTitle {
+  font-size: 24px;
+  color: #000;
+  text-align: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+.hasChecked {
+  box-sizing: border-box;
+  font-size: 16px;
+  padding: 6px;
+  color: #3983bf;
+  border: 1px solid;
+  text-align: center;
+}
+
+.normalText {
+  box-sizing: border-box;
+  font-size: 16px;
+  padding: 6px;
+  color: #000;
+  border: 1px solid;
+  text-align: center;
+  width: 62px;
+}
+
+/* margin-bottom: 30px; */
+
+
+.subtitle {
+  font-size: 20px;
+  color: #000;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 30px;
+  letter-spacing: 6px;
+}
+
+.timeAndNo {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 30px;
+}
+
+.number {
+  font-size: 16px;
+  color: #3983bf;
+  font-weight: normal;
+}
+.time {
+  font-size: 16px;
+  color: #666;
+}
+
+.lineWrap {
+  border-bottom: 1px solid #000;
+  padding: 20px 0;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.nameValue {
+  display: inline-block;
+  width: 32%;
+}
+
+.mListRp {
+  font-size: 24px;
+  font-weight: bold;
+  padding: 30px 0;
+}
+
+
+.mListItem {
+ border-bottom: 1px dashed #666;
+ padding-bottom: 16px;
+ margin-bottom: 16px;
+}
+
+.mListItem:last-child {
+  border: none;
+}
+
+.countName {
+  display: flex;
+  justify-content: space-between;
+}
+
+.mListname {
+  font-size: 16px;
+  color: #000;
+  font-weight: bold;
+}
+
+.mListCount {
+  font-size: 18px;
+  color: #333;
+  display: inline-flex;
+}
+
+.mListNameValue {
+  font-size: 16px;
+  line-height: 2;
+  color: #666;
+}
+
+.signWrap {
+  display: flex;
+  /*justify-content: baseline;*/
+}
+
+.download_btn {
+  width: 140px;
+  height: 40px;
+  line-height: 40px;
+  border-radius: 6px;
+  text-align: center;
+  color: #fff;
+  background-color: #ee692c;
+  margin: 20px auto;
+  cursor: pointer;
+  position: relative;
+}
+
+.download_btn:hover {
+  background-color: #f85104;
+}
+
+:root {
+  --animate-duration: 1.8s;
+  --animate-delay: 1s;
+  --animate-repeat: 1;
+}
+/* .animate__animated {
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-duration: var(--animate-duration);
+  animation-duration: var(--animate-duration);
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+} */
+
+/* .animate__animated.animate__infinite {
+  -webkit-animation-iteration-count: infinite;
+  animation-iteration-count: infinite;
+} */
+
+
+.heart {
+  position: absolute;
+  right: 20px;
+  font-weight: bolder;
+  font-size: 18px;
+}
+
+.download_btn:hover .heart {
+  bottom: -4px;
+  animation-duration: 1.6s;
+  -webkit-animation-iteration-count: infinite;
+  animation-iteration-count: infinite;
+}
+
+/*@-webkit-keyframes bounce {*/
+/*  from,*/
+/*  20%,*/
+/*  53%,*/
+/*  to {*/
+/*    -webkit-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);*/
+/*    animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);*/
+/*    -webkit-transform: translate3d(0, 0, 0);*/
+/*    transform: translate3d(0, 0, 0);*/
+/*  }*/
+
+/*  40%,*/
+/*  43% {*/
+/*    -webkit-animation-timing-function: cubic-bezier(0.755, 0.05, 0.855, 0.06);*/
+/*    animation-timing-function: cubic-bezier(0.755, 0.05, 0.855, 0.06);*/
+/*    -webkit-transform: translate3d(0, -30px, 0) scaleY(1.1);*/
+/*    transform: translate3d(0, -30px, 0) scaleY(1.1);*/
+/*  }*/
+
+/*  70% {*/
+/*    -webkit-animation-timing-function: cubic-bezier(0.755, 0.05, 0.855, 0.06);*/
+/*    animation-timing-function: cubic-bezier(0.755, 0.05, 0.855, 0.06);*/
+/*    -webkit-transform: translate3d(0, -15px, 0) scaleY(1.05);*/
+/*    transform: translate3d(0, -15px, 0) scaleY(1.05);*/
+/*  }*/
+
+/*  80% {*/
+/*    -webkit-transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);*/
+/*    transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);*/
+/*    -webkit-transform: translate3d(0, 0, 0) scaleY(0.95);*/
+/*    transform: translate3d(0, 0, 0) scaleY(0.95);*/
+/*  }*/
+
+/*  90% {*/
+/*    -webkit-transform: translate3d(0, -4px, 0) scaleY(1.02);*/
+/*    transform: translate3d(0, -4px, 0) scaleY(1.02);*/
+/*  }*/
+/*}*/
+
+/*@keyframes bounce {*/
+/*  from,*/
+/*  20%,*/
+/*  53%,*/
+/*  to {*/
+/*    -webkit-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);*/
+/*    animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);*/
+/*    -webkit-transform: translate3d(0, 0, 0);*/
+/*    transform: translate3d(0, 0, 0);*/
+/*  }*/
+
+/*  40%,*/
+/*  43% {*/
+/*    -webkit-animation-timing-function: cubic-bezier(0.755, 0.05, 0.855, 0.06);*/
+/*    animation-timing-function: cubic-bezier(0.755, 0.05, 0.855, 0.06);*/
+/*    -webkit-transform: translate3d(0, -30px, 0) scaleY(1.1);*/
+/*    transform: translate3d(0, -30px, 0) scaleY(1.1);*/
+/*  }*/
+
+/*  70% {*/
+/*    -webkit-animation-timing-function: cubic-bezier(0.755, 0.05, 0.855, 0.06);*/
+/*    animation-timing-function: cubic-bezier(0.755, 0.05, 0.855, 0.06);*/
+/*    -webkit-transform: translate3d(0, -15px, 0) scaleY(1.05);*/
+/*    transform: translate3d(0, -15px, 0) scaleY(1.05);*/
+/*  }*/
+
+/*  80% {*/
+/*    -webkit-transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);*/
+/*    transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);*/
+/*    -webkit-transform: translate3d(0, 0, 0) scaleY(0.95);*/
+/*    transform: translate3d(0, 0, 0) scaleY(0.95);*/
+/*  }*/
+
+/*  90% {*/
+/*    -webkit-transform: translate3d(0, -4px, 0) scaleY(1.02);*/
+/*    transform: translate3d(0, -4px, 0) scaleY(1.02);*/
+/*  }*/
+/*}*/
+
+/*.animate__bounce {*/
+/*  -webkit-animation-name: bounce;*/
+/*  animation-name: bounce;*/
+/*  -webkit-transform-origin: center bottom;*/
+/*  transform-origin: center bottom;*/
+/*}*/
+
+

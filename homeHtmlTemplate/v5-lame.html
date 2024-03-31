@@ -2,76 +2,55 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>文字转语音</title>
-    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="/css/vant.min.css" type="text/css" />
+  <link rel="stylesheet" href="/css/index.css" type="text/css" />
 </head>
 
 <body>
-<H1>语音提示系统部分警报，旨在让内部运营更加优化。例如: 不用时刻人工盯着监控群</H1>
-<input type="text" id="input" value="支付宝到账1亿8千万">
-<button id="btn">开启播报</button>
+  <div id="app">
+      <header class="header">
+          <H1 style="color: #ff7707">
+              语音播放系统部分警报
+          </H1>
+          <van-row class="open-wrap">
+              <van-col>
+                  <van-switch @click="startAutoFn"  v-model="isOpenAudioMsg" />
+              </van-col>
+              <van-col>
+                  <h2 class="open-status-yes" v-show="isOpenAudioMsg">已开启</h2>
+                  <h2 class="open-status-no" v-show="!isOpenAudioMsg">未开启</h2>
+              </van-col>
+          </van-row>
+
+      </header>
+      <div class="content">
+          <van-row class="line-item table-header">
+              <van-col style="text-align: center" span="10">消息内容</van-col>
+              <van-col span="3">播报状态</van-col>
+              <van-col span="3">剩余播报次数</van-col>
+              <van-col span="4">推送时间</van-col>
+              <van-col span="4">操作</van-col>
+          </van-row>
+          <van-row class="line-item table-tr" v-for="({ id, messageText, audioStatus, createdTime }, index) in msgList" :key="id">
+              <van-col style="text-align: center" span="10">{{ messageText }}</van-col>
+              <van-col span="3">{{ audioStatus }}</van-col>
+              <van-col span="3">0</van-col>
+              <van-col span="4">{{ createdTime }}</van-col>
+              <van-col span="4"><van-button size="small">删除</van-button></van-col>
+          </van-row>
+      </div>
+  </div>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<!--  <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>-->
+  <script src="/js/libs/vue.main.js"></script>
+  <script src="/js/libs/vant.min.js"></script>
+  <script src="/js/libs/html2canvas.min.js"></script>
+  <script src="/js/index.js"></script>
+
 </body>
-<script>
-  btn.addEventListener("click", function () {
-    console.log("触发了点击事件")
-    //指定文字合成语音
-    let speakAudio = new window.SpeechSynthesisUtterance('开始语音播报')
 
-    //获取输入框内的文本
-    let text = jQuery("#input").val();
-    // let text = Math.random().toFixed(4);
-    //配置
-    speakAudio.lang = "zh-CN";//使用语言
-    speakAudio.rate = 1;//播放语速
-    speakAudio.volume = 1;//播放音量
-    //speakAudio.voice = '';//设置声音
-    speakAudio.text = text;//改变播放文本内容
-    window.speechSynthesis.speak(speakAudio);//控制播放
-  })
-  // $('#input').click()
-  document.getElementById('btn').click()
-  function handleReadingMsgFn(msg) {
-    //指定文字合成语音
-    let speakAudio = new window.SpeechSynthesisUtterance('开始语音播报')
-
-    //配置
-    speakAudio.lang = "zh-CN";//使用语言
-    speakAudio.rate = 1;//播放语速
-    speakAudio.volume = 1;//播放音量
-    //speakAudio.voice = '';//设置声音
-    speakAudio.text = msg;//改变播放文本内容
-    window.speechSynthesis.speak(speakAudio);//控制播放
-  }
-  var baseUrl = 'http://localhost:8046'
-  function handleMsgInfoFn() {
-    $.get(baseUrl + '/getInfo', { param1: 'value1', param2: 'value2' },
-      function(response) {
-      // 请求成功时的回调函数
-      console.log(response);
-      if (response && response.code === 200) {
-        const { message } = response
-        handleReadingMsgFn(message)
-      }
-    }).fail(function(xhr, status, error) {
-      // 请求失败时的回调函数
-      console.error(error);
-    });
-  }
-  setInterval(async () => {
-    await handleMsgInfoFn()
-  }, 10 * 1000)
-  // $(document).ready(async function() {
-  //   try {
-  //     let result = await $.ajax({
-  //       url: 'https://api.example.com/data',
-  //       type: 'GET'
-  //     });
-  //     console.log('Data received:', result);
-  //   } catch (error) {
-  //     console.error('Error fetching data:', error);
-  //   }
-  // });
-</script>
+</html>

@@ -6,3 +6,5 @@ package-lock.json
 eng.traineddata
 
 bank_pnb/pnb_bank_flow_files
+logger/*
+!logger/index.js

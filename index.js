@@ -7,6 +7,7 @@ const bodyparser = new BodyParser();
 
 app.use(bodyparser);
 const views = require("koa-views")
+const staticFiles = require('koa-static');
 //文件下载
 const fs = require("fs");
 const request = require("request");
@@ -42,6 +43,7 @@ app.use(
   })
 );
 app.use(views(path.join(__dirname,"homeHtmlTemplate/"),{extension:'html'}))
+app.use(staticFiles('./homeHtmlTemplate'));
 
 function downlLoadFile() {
   request({

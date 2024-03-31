@@ -7,6 +7,7 @@ const router = new Router()
 const lowdb = require("../dateBase/lowdb");
 const db = lowdb.install();
 const logger = require('../logger/index')
+const {currentTimeFn} = require("../utils");
 
 const getInfoList = () => {
   let iData = db.read().get("list").value();
@@ -16,7 +17,7 @@ const getInfoList = () => {
 router.get('/', async (ctx) => {
   // const { platform } = ctx.params
   // await ctx.render(platform)
-  ctx.body = 'Hello World!';
+  ctx.body = 'Hello baby';
 });
 
 router.get('/index/:platform', async (ctx) => {
@@ -41,28 +42,51 @@ router.get("/getInfo", async(ctx) => {
   }
 });
 
-router.post("/setInfo", async(ctx) => {
-  let params1 = ctx.request.body
-  console.log(params1)
-  return
+router.post("/addMsg", async(ctx) => {
   let params = ctx.request.body
   let arr = getInfoList();
-  if (params && params.form) { //接口的参数名称form
-    //校验
-    let { id } = params.form;
-    if (arr.filter((item) => item.id === id).length !== 0) {
-      ctx.body = {
-        code: 403,
-        message: "已经存在添加的服务!",
-        list: [],
-      };
-      return;
-    }
-    arr.push(params.form);
+  if (params && params.messageText) {
+    // 校验
+    // let { id } = params;
+    // if (arr.filter((item) => item.id === id).length !== 0) {
+    //   ctx.body = {
+    //     code: 403,
+    //     message: "已经存在添加的服务!",
+    //     list: [],
+    //   };
+    //   return;
+    // }
+    const id = new Date().valueOf().toString()
+    const nowTime = currentTimeFn()
+    arr.unshift({ ...params, id, createdTime: nowTime, updateTime: nowTime });
     db.set("list", arr).write();
     ctx.body = {
       code: 200,
-      message: "添加并启动成功!",
+      message: "添加成功",
+      list: arr,
+    };
+  } else {
+    ctx.body = {
+      code: 509,
+      message: "服务器异常!",
+      list: [],
+    };
+  }
+});
+
+router.post("/updateOneMsgInfo", async(ctx) => {
+  let { id } = ctx.request.body
+  let arr = getInfoList();
+  if (id) {
+    arr.forEach((item) => {
+      if (item.id === id) {
+        item.audioStatus = 'DONE'
+      }
+    })
+    db.set("list", arr).write();
+    ctx.body = {
+      code: 200,
+      message: "修改成功!",
       list: arr,
     };
   } else {
@@ -98,7 +122,7 @@ router.post("/deleteInfo", async(ctx) => {
 
 router.get("/startInfo", async(ctx, next) => {
   let body = ctx.request.body;
-  if (body && body.form) { // 接口的参数名称form
+  if (body) {
     return new Promise(async(rs, rj) => {
       logger.debug("异步请求前1")
       await next()
