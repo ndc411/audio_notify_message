@@ -37,7 +37,12 @@ var app = new Vue({
   methods: {
 
     async getMsgListFn() {
-      const { status, data } = await axios.get(this.apiBaseUrl + '/getInfo');
+      const platform = this.getPlatformfn()
+      if (!platform) {
+        alert('浏览器地址不对，请核查!')
+        return
+      }
+      const { status, data } = await axios.post(this.apiBaseUrl + `/getInfo`, { platform });
       if (status === 200) {
         const { code, list } = data
         if (code === 200) {
@@ -83,8 +88,18 @@ var app = new Vue({
       }
     },
 
+    getPlatformfn: function () {
+      const platform = location.href.split('home?')[1]
+      return platform
+    },
+
     handleMsgInfoFn: async function () {
-      const { status, data } = await axios.get(this.apiBaseUrl + '/getInfo');
+      const platform = this.getPlatformfn()
+      if (!platform) {
+        alert('浏览器地址不对，请核查!')
+        return
+      }
+      const { status, data } = await axios.post(this.apiBaseUrl + `/getInfo`, { platform });
       if (status === 200) {
         const { code, list } = data
         if (code === 200) {
@@ -118,7 +133,13 @@ var app = new Vue({
     },
 
     updateOneMsgFn: async function ({id}) {
-      const { status, data } = await axios.post(this.apiBaseUrl + '/updateOneMsgInfo', {id});
+
+      const platform = this.getPlatformfn()
+      if (!platform) {
+        alert('浏览器地址不对，请核查!')
+        return
+      }
+      const { status, data } = await axios.post(this.apiBaseUrl + '/updateOneMsgInfo', { id ,platform });
       if (status === 200) {
         const { code, list } = data
         if (code === 200) {}

@@ -4,7 +4,7 @@
 const log4js = require("log4js")
 const path = require("path");
 
-const platform = 'v5-lame'
+const platform = 'log_center'
 const loggerPath = `logger/${platform}/`;
 
 log4js.configure({
@@ -60,6 +60,6 @@ log4js.configure({
 
 const logger = log4js.getLogger();
 
-logger.debug("日志")
+logger.debug("日志---启动")
 
 module.exports = logger

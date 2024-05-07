@@ -5,28 +5,43 @@
 const Router = require('koa-router')
 const router = new Router()
 const lowdb = require("../dateBase/lowdb");
-const db = lowdb.install();
+// const db = lowdb.install();
 const logger = require('../logger/index')
 const {currentTimeFn} = require("../utils");
 
-const getInfoList = () => {
+const getInfoList = (platform) => {
+  const db = lowdb.install(platform);
   let iData = db.read().get("list").value();
   return iData && iData.length ? iData : [];
 };
 
+const verifyPlatformFn = (ctx, platform) => {
+  if (!['v5_lame', 'v6_shiva'].includes(platform)) {
+    ctx.body = {
+      code: 522,
+      message: "平台代码不正确!",
+      list: [],
+    };
+    return false
+  }
+  return true
+}
+
 router.get('/', async (ctx) => {
   // const { platform } = ctx.params
   // await ctx.render(platform)
-  ctx.body = 'Hello baby';
+  ctx.body = '<h1 style="text-align: center;padding-top: 100px; color: orange">Hello baby！欢迎来到语音播报系统</h1>';
 });
 
-router.get('/index/:platform', async (ctx) => {
-  const { platform } = ctx.params
-  await ctx.render(platform)
+router.get('/home', async (ctx) => {
+  await ctx.render('home')
 });
 
-router.get("/getInfo", async(ctx) => {
-  let iData = getInfoList();
+// todo 验证 platform 是否在 列表中
+router.post("/getInfo", async(ctx) => {
+  const { platform } = ctx.request.body
+  if (!verifyPlatformFn(ctx, platform)) return
+  let iData = getInfoList(platform);
   if (iData) {
     ctx.body = {
       code: 200,
@@ -44,8 +59,10 @@ router.get("/getInfo", async(ctx) => {
 
 router.post("/addMsg", async(ctx) => {
   let params = ctx.request.body
-  let arr = getInfoList();
   if (params && params.messageText) {
+    const { platform } = ctx.request.body
+    if (!verifyPlatformFn(ctx, platform)) return
+    let arr = getInfoList(platform);
     // 校验
     // let { id } = params;
     // if (arr.filter((item) => item.id === id).length !== 0) {
@@ -59,6 +76,7 @@ router.post("/addMsg", async(ctx) => {
     const id = new Date().valueOf().toString()
     const nowTime = currentTimeFn()
     arr.unshift({ ...params, id, createdTime: nowTime, updateTime: nowTime });
+    const db = lowdb.install(platform);
     db.set("list", arr).write();
     ctx.body = {
       code: 200,
@@ -75,8 +93,9 @@ router.post("/addMsg", async(ctx) => {
 });
 
 router.post("/updateOneMsgInfo", async(ctx) => {
-  let { id } = ctx.request.body
-  let arr = getInfoList();
+  let { id, platform } = ctx.request.body
+  if (!verifyPlatformFn(ctx, platform)) return
+  let arr = getInfoList(platform);
   if (id) {
     arr.forEach((item) => {
       if (item.id === id) {
@@ -84,6 +103,7 @@ router.post("/updateOneMsgInfo", async(ctx) => {
         item.updateTime = currentTimeFn()
       }
     })
+    const db = lowdb.install(platform);
     db.set("list", arr).write();
     ctx.body = {
       code: 200,
@@ -100,12 +120,15 @@ router.post("/updateOneMsgInfo", async(ctx) => {
 });
 
 router.post("/deleteInfo", async(ctx) => {
+  let { id, platform } = ctx.request.body
+  if (!verifyPlatformFn(ctx, platform)) return
   let params = ctx.request.body,
-    arr = getInfoList();
+    arr = getInfoList(platform);
   if (params && params.ids) {
     //校验
     let ids = `${params.ids}`.split(",");
     let newArr = arr.filter((item) => !ids.includes(String(item.id)));
+    const db = lowdb.install(platform);
     db.set("list", newArr).write();
     ctx.body = {
       code: 200,

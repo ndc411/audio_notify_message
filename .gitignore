@@ -8,3 +8,5 @@ eng.traineddata
 bank_pnb/pnb_bank_flow_files
 logger/*
 !logger/index.js
+dateBase/data_center
+dateBase/data_center/data.json
