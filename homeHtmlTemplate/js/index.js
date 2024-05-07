@@ -44,9 +44,11 @@ var app = new Vue({
       }
       const { status, data } = await axios.post(this.apiBaseUrl + `/getInfo`, { platform });
       if (status === 200) {
-        const { code, list } = data
+        const { code, list, message } = data
         if (code === 200) {
           this.msgList = list
+        } else {
+          vant.Toast({ message, timeout: 4 * 1000 })
         }
       }
     },
@@ -101,7 +103,7 @@ var app = new Vue({
       }
       const { status, data } = await axios.post(this.apiBaseUrl + `/getInfo`, { platform });
       if (status === 200) {
-        const { code, list } = data
+        const { code, list, message } = data
         if (code === 200) {
           for (let i = list.length -1; i >=0; i--) {
             const item = list[i]
@@ -113,6 +115,8 @@ var app = new Vue({
               break;
             }
           }
+        } else {
+          vant.Toast(message)
         }
       }
     },

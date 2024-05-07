@@ -19,7 +19,7 @@ const verifyPlatformFn = (ctx, platform) => {
   if (!['v5_lame', 'v6_shiva'].includes(platform)) {
     ctx.body = {
       code: 522,
-      message: "平台代码不正确!",
+      message: "平台代码标识不正确，请联系技术确认!",
       list: [],
     };
     return false
