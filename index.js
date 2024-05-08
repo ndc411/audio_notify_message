@@ -70,7 +70,8 @@ function downlLoadFile() {
 app.use(router.routes());
 app.use(router.allowedMethods())
 
-app.listen(3001, () => {
-  console.log("正在监听8046端口号");
-  console.log("http://localhost:8046");
+let portTemp = 8080
+app.listen(portTemp, () => {
+  console.log(`正在监听 ${portTemp} 端口号`);
+  console.log(`http://localhost:${portTemp}`);
 });

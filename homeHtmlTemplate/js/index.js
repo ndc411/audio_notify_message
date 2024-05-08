@@ -10,7 +10,7 @@ var app = new Vue({
   el: '#app',
   data: {
     voiceType: 'zh-TW',
-    apiBaseUrl: 'http://localhost:8046', // todo-la 这里改为真实的服务地址
+    apiBaseUrl: 'http://35.154.215.199:8080', // todo-la 这里改为真实的服务地址
     isOpenAudioMsg: false,
     msgList: [],
     readingMsgInterval: null, // 轮询读取信息的时间任务标识
