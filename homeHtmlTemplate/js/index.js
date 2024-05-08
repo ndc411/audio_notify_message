@@ -10,7 +10,7 @@ var app = new Vue({
   el: '#app',
   data: {
     voiceType: 'zh-TW',
-    apiBaseUrl: 'http://35.154.215.199:8080', // todo-la 这里改为真实的服务地址
+    apiBaseUrl: 'http://localhost:8080', // todo-la 这里改为真实的服务地址
     isOpenAudioMsg: false,
     msgList: [],
     readingMsgInterval: null, // 轮询读取信息的时间任务标识
@@ -156,9 +156,11 @@ var app = new Vue({
         alert('浏览器地址不对，请核查!')
         return
       }
-      const { status } = await axios.post(this.apiBaseUrl + '/deleteInfo', { id ,platform });
+      console.log(id)
+      const { status } = await axios.post(this.apiBaseUrl + '/deleteInfo', { ids: id, platform });
       if (status === 200) {
         await this.getMsgListFn()
+        vant.Toast('删除成功 ！')
       } else {
         vant.Toast('删除失败 ！')
       }
