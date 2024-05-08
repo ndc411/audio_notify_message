@@ -10,11 +10,16 @@ var app = new Vue({
   el: '#app',
   data: {
     voiceType: 'zh-TW',
-    apiBaseUrl: 'http://localhost:8080', // todo-la 这里改为真实的服务地址
+    // apiBaseUrl: 'http://localhost:8080', // todo-la 这里改为真实的服务地址
     isOpenAudioMsg: false,
     msgList: [],
     readingMsgInterval: null, // 轮询读取信息的时间任务标识
     showListInterval: null, // 仅仅展示消息列表的标识
+  },
+  computed: {
+    apiBaseUrl() {
+      return location.origin
+    }
   },
   async mounted() {
     this.no = new Date().valueOf().toString().slice(0, 12)
