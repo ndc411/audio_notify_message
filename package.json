@@ -4,7 +4,8 @@
   "description": "网页语音播报通知",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start:audio_msg": "node index.js"
   },
   "keywords": [],
   "author": "",

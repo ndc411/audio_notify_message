@@ -20,3 +20,9 @@ updateTime --- 更新时间
 
 #### todo-la 需要解决的待办事项
 
+### 开发
+node index.js
+
+### 部署
+pm2 start npm --name audio_msg -- run start:audio_msg
+
