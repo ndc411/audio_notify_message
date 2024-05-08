@@ -70,7 +70,7 @@ function downlLoadFile() {
 app.use(router.routes());
 app.use(router.allowedMethods())
 
-app.listen(8046, () => {
+app.listen(3001, () => {
   console.log("正在监听8046端口号");
   console.log("http://localhost:8046");
 });
