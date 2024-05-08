@@ -6,10 +6,15 @@ const fs = require("fs");
  Created by M on 2024/03/29 20
  */
 const initDataFileFn = (dataPath) => {
+  const initData = {
+    "messageText": "亲爱的，今天语音播报开始啦🌶",
+    "platform": "demo",
+    "audioStatus": "TODO"
+  }
   if (!existsSync(dataPath)) {
     writeFileSync(
       dataPath,
-      JSON.stringify({"flist": [], "list": []}, null, 2),
+      JSON.stringify({"flist": [], "list": [initData]}, null, 2),
       { encoding: 'utf8'});
   }
 }

@@ -150,6 +150,20 @@ var app = new Vue({
       }
     },
 
+    deleteMsgFn: async function (id) {
+      const platform = this.getPlatformfn()
+      if (!platform) {
+        alert('浏览器地址不对，请核查!')
+        return
+      }
+      const { status } = await axios.post(this.apiBaseUrl + '/deleteInfo', { id ,platform });
+      if (status === 200) {
+        await this.getMsgListFn()
+      } else {
+        vant.Toast('删除失败 ！')
+      }
+    },
+
     deleteDrugFn: function (index) {
       vant.Dialog.confirm({
         title: '确认删除该药品？',

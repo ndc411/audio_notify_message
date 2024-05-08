@@ -6,7 +6,7 @@ dayjs.extend(timezone)
 
 const format = "YYYY-MM-DD";
 const currentTimeFn = () => {
-  return dayjs().format(`${format} HH:mm:ss`);
+  return dayjs().add(8, 'h').format(`${format} HH:mm:ss`);
 };
 
 const transferFn = function (num) {

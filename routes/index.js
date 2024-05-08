@@ -80,8 +80,7 @@ router.post("/addMsg", async(ctx) => {
     db.set("list", arr).write();
     ctx.body = {
       code: 200,
-      message: "添加成功",
-      list: arr,
+      message: "添加成功"
     };
   } else {
     ctx.body = {
@@ -132,15 +131,10 @@ router.post("/deleteInfo", async(ctx) => {
     db.set("list", newArr).write();
     ctx.body = {
       code: 200,
-      message: "删除成功",
-      list: newArr,
+      message: "删除成功"
     };
   } else {
-    ctx.body = {
-      code: 500,
-      message: "服务器异常!",
-      list: [],
-    };
+    ctx.body = { code: 500, message: "服务器异常!" };
   }
 });
 

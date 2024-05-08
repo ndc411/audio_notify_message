@@ -42,7 +42,7 @@
                   <van-col span="3">{{ audioStatus }} <van-loading v-show="audioStatus === 'DOING'" type="spinner" color="#1989fa" /></van-col>
                   <van-col span="3">0</van-col>
                   <van-col span="4">{{ updateTime }}</van-col>
-                  <van-col span="4"><van-button size="small" @click="deleteDrugFn">删除</van-button></van-col>
+                  <van-col span="4"><van-button size="small" @click="deleteMsgFn(id)">删除</van-button></van-col>
               </van-row>
           </template>
       </div>
