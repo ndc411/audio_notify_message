@@ -6,8 +6,8 @@
 ```
 id --- 编号
 platform --- 平台
-name --- 项目名称
-messageContent --- 消息
+projectName --- 项目名称
+messageText --- 消息
 type--- 消息类型
 channel --- 
 platAccountId --- 
