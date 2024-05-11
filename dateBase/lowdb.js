@@ -10,7 +10,7 @@ const initDataFileFn = (dataPath) => {
     "messageText": "亲爱的，今天语音播报开始啦🌶",
     "platform": "demo",
     "audioStatus": "示例",
-    "id": "1"
+    // "id": "1"
   }
   if (!existsSync(dataPath)) {
     writeFileSync(
