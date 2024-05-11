@@ -15,6 +15,9 @@ var app = new Vue({
     msgList: [],
     readingMsgInterval: null, // 轮询读取信息的时间任务标识
     showListInterval: null, // 仅仅展示消息列表的标识
+    statusObj: {
+      "TODO": "待播报", 'DOING': '播报中', 'DONE': '播报完毕'
+    }
   },
   computed: {
     apiBaseUrl() {

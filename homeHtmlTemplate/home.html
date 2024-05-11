@@ -39,10 +39,13 @@
           <template v-for="({ id, messageText, audioStatus, createdTime, updateTime }, index) in msgList" :key="id">
               <van-row class="line-item table-tr" :style="{ background: audioStatus === 'DOING' ? '#ee5811' : '' }">
                   <van-col style="text-align: center" span="10">{{ messageText }}</van-col>
-                  <van-col span="3">{{ audioStatus }} <van-loading v-show="audioStatus === 'DOING'" type="spinner" color="#1989fa" /></van-col>
+                  <van-col span="3">
+                      {{ statusObj[audioStatus] || audioStatus }}
+                      <van-loading v-show="audioStatus === 'DOING'" type="spinner" color="#1989fa" />
+                  </van-col>
                   <van-col span="3">0</van-col>
                   <van-col span="4">{{ updateTime }}</van-col>
-                  <van-col span="4"><van-button size="small" @click="deleteMsgFn(id)">删除</van-button></van-col>
+                  <van-col span="4" v-show="audioStatus!=='示例'"><van-button size="small" @click="deleteMsgFn(id)">删除</van-button></van-col>
               </van-row>
           </template>
       </div>
