@@ -26,3 +26,5 @@ node index.js
 ### 部署
 pm2 start npm --name audio_msg -- run start:audio_msg
 
+### 服务器名称: lame-bot-new
+
